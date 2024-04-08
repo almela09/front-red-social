@@ -1,3 +1,4 @@
+
 .register-home{
     display: flex;
     justify-content: center;
@@ -7,11 +8,11 @@
     background: url('../../assets/images/8287091.jpg');
     margin: 0;
     padding: 0;
-    overflow: hidden;
+  
 }
 
 
-.wrapper-register{
+.wrapper{
  width: 420px;
  background: transparent;
  border: 2px solid rgba(255, 255, 255, .2);
@@ -55,7 +56,7 @@
     color: white;
 }
 
-.input-box .icon-email{
+.input-box .icon-user{
 
     position: absolute;
     right: 20px;
