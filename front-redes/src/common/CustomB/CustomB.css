@@ -1,0 +1,17 @@
+
+.customlink-design{
+
+    color: rgb(246, 73, 133);
+    font-weight: bold;
+
+    margin: 1em;
+    transition: 0.3s;
+    
+}
+
+.customlink-design:hover{
+
+    transition: 0.3s;
+    color: crimson;
+    cursor: pointer;
+}
