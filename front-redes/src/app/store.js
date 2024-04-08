@@ -11,30 +11,23 @@ import detailSlice from "./slices/detailSlice";
 
 
 const reducers = combineReducers({
-  user: userSlice,
-  detail: detailSlice
+    user: userSlice,
+    detail: detailSlice
 });
 
 const persistConfig = {
-  key: "root",
-  storage,
-  transforms: [
-    encryptTransform({
-      secretKey: 'saltamontes',
-      onError: function (error) {
-        // Handle the error.
-      },
-    }),
-  ],
+    key: "root",
+    storage,
+
 };
 
 
 const persistedReducer = persistReducer(persistConfig, reducers);
 
 export default configureStore({
-  reducer: persistedReducer,
-  middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware({
-      serializableCheck: false,
-    }).concat(thunk),
+    reducer: persistedReducer,
+    middleware: (getDefaultMiddleware) =>
+        getDefaultMiddleware({
+            serializableCheck: false,
+        }).concat(thunk),
 });
