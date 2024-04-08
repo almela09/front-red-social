@@ -5,6 +5,11 @@ export const Home = () => {
     
       <div className="home-design">
            <ExpandableCard />
+           <ExpandableCard />
+           <ExpandableCard />
+           <ExpandableCard />
+           <ExpandableCard />
+           <ExpandableCard />
           
       </div>
   );

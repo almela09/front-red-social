@@ -1,12 +1,23 @@
 
 .home-design{
 
-height: 100vh;
-width: 100vw;
-
-background-color: rgb(225, 225, 179);
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100vw;
+    background: url('../../assets/images/8287091.jpg');
+    margin: 0;
+    padding: 0;
 }
+
+.home-design {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px; 
+    justify-content: center; 
+    padding: 20px; 
+  }
+  .home-design > * {
+    margin: 9px; 
+  }
