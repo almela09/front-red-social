@@ -2,11 +2,12 @@
 .home-design{
 
     display: flex;
+    
     justify-content: center;
     align-items: center;
-    min-height: 100vh;
+    height: 100vh;
     width: 100vw;
-    background: url('../../assets/images/8287091.jpg');
+    background: url('../../assets/images/wallpaper.jpeg');
     margin: 0;
     padding: 0;
 }

@@ -7,10 +7,10 @@ function App() {
  
 
   return (
-    <>
+    <div style={{ maxWidth: '100%', overflowX: 'hidden' }}>
      <Header/>
      <Body/>
-    </>
+    </div>
   )
 }
 
