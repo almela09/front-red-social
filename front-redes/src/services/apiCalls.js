@@ -36,3 +36,7 @@ export const LoginUser = async (user) => {
     
 }
 
+export const getPosts = async ()=> {
+
+  
+}
