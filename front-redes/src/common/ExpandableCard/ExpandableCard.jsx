@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -6,9 +6,33 @@ import CardMedia from '@mui/material/CardMedia';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Collapse from '@mui/material/Collapse';
+import { getAllPosts } from '../../services/apiCalls'; 
+import { useSelector } from "react-redux"
 
 const ExpandableCard = () => {
   const [expanded, setExpanded] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+ 
+  const token = useSelector((state) => state.user.token) //IMPORTANTE, PAULA USA EL SLICE QUE TOCA, GRACIAS, DE NADA.
+  useEffect(() => {
+  console.log(token)
+    const fetchPosts = async () => {
+      setIsLoading(true);
+      try {
+        const data = await getAllPosts(token);
+        if (data && data.data) { 
+          setPosts(data.data);
+        }
+      } catch (error) {
+        
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchPosts();
+  }, []);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -16,20 +40,6 @@ const ExpandableCard = () => {
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component="img"
-        height="140"
-        image="https://source.unsplash.com/random"
-        alt="random"
-      />
-      <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
-          Expandable Card
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          Click below to expand the card and read more about it.
-        </Typography>
-      </CardContent>
       <CardActions>
         <Button size="small" onClick={handleExpandClick}>
           {expanded ? 'Less' : 'More'}
@@ -37,10 +47,23 @@ const ExpandableCard = () => {
       </CardActions>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
-          <Typography paragraph>
-            Here's more detailed information that becomes visible when the card is expanded.
-            You can include any additional content or information here.
-          </Typography>
+          {isLoading ? (
+            <Typography paragraph>Loading posts...</Typography>
+          ) : posts.length > 0 ? (
+            posts.map((post) => (
+              <Typography paragraph key={post._id}>
+                <strong>Title:</strong> {post.title}
+                <br />
+                <strong>Text:</strong> {post.text}
+                <br />
+                <strong>Author ID:</strong> {post.author}
+                <br />
+                <strong>Likes:</strong> {post.like.length}
+              </Typography>
+            ))
+          ) : (
+            <Typography paragraph>No posts available.</Typography>
+          )}
         </CardContent>
       </Collapse>
     </Card>
