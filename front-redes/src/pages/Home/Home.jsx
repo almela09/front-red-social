@@ -31,6 +31,13 @@ export const Home = () => {
     return <p>Loading posts...</p>;
   }
 
+  if (!token) {
+    
+    return (
+      <div className= "home-design"><p>Bienvenido a KawaiiDev, tu red social más friki.</p></div>
+    )
+  }
+
   if (posts.length === 0) {
     return <p>No hay posts disponibles.</p>;
   }
