@@ -56,5 +56,21 @@ export const getAllPosts = async (token) => {
   }
 };
 
+export const getMyProfile = async (username)=>{
+  try {
+    const response = await fetch(`${url}/users/${username}`, {
+      method: "GET",
+      redirect: "follow",
+    })
+    const data = await response.json()
+    if (!data.success) {
+      throw new Error(data.message)
+    }
+    return data
+  } catch (error) {
+    console.log(error)
+    throw error
+  }
+}
 
  
