@@ -1,5 +1,4 @@
-import "./Home.css"
-
+import "./Home.css";
 import PostCard from "../../common/PostCard/PostCard";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
@@ -38,15 +37,11 @@ export const Home = () => {
 
   return (
     <div className="home-design">
-      <div className= "card-design">
-      {posts.map((post, index) => (
-        <PostCard 
-          key={post._id} 
-          post={post}
-        />
-      ))}
+      <div className="card-design">
+        {posts.map((post, index) => (
+          <PostCard key={post._id} post={post} />
+        ))}
       </div>
     </div>
   );
-  
 };

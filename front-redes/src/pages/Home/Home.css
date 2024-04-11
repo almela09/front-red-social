@@ -12,9 +12,9 @@
     padding: 0;
 }
 
-.home-design {
+.card-design {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(4, 1fr); 
     gap: 20px; 
     justify-content: center; 
     padding: 20px; 
@@ -22,3 +22,4 @@
   .home-design > * {
     margin: 9px; 
   }
+

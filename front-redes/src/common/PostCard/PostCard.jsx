@@ -4,6 +4,7 @@ import { Card, CardContent, Typography } from '@mui/material';
 const PostCard = ({ post }) => {
    
   return (
+    <div className="box-design">
     <Card sx={{ maxWidth: 345, marginBottom: 2 }}>
       <CardContent>
         <Typography variant="h5">{post.title}</Typography>
@@ -12,6 +13,7 @@ const PostCard = ({ post }) => {
         <Typography color="text.secondary">Likes: {post.like.length}</Typography>
       </CardContent>
     </Card>
+    </div>
   );
 };
 
