@@ -32,7 +32,7 @@ export const Home = () => {
   }
 
   if (posts.length === 0) {
-    return <p>No posts available.</p>;
+    return <p>No hay posts disponibles.</p>;
   }
 
   return (
