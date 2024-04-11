@@ -1,0 +1,11 @@
+
+.box-design{
+    border-color: white;
+    border-width: 3px;
+    border-radius: 10px;
+}
+
+
+div{
+    border: 1px solid red
+}
