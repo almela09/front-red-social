@@ -1,4 +1,4 @@
-const url= 'https://backend-api-ii-redes-sociales-dev-fnbs.2.ie-1.fl0.io/api/'
+const url = 'https://backend-api-ii-redes-sociales-dev-fnbs.2.ie-1.fl0.io/api/'
 
 export const registerUserApi = async (user) => {
   try {
@@ -18,31 +18,30 @@ export const registerUserApi = async (user) => {
   }
 };
 export const LoginUser = async (user) => {
-    try {
-        const response = await fetch(`${url}auth/login`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(user),
-        })
-        const data = await response.json()
-        if (!data.success) {
-          throw new Error(data.message)
-        }
-        return data
-      } catch (error) {
-        console.log("Error al loguear el usuario", error)
-        throw error
-      }
-    
-}
+  try {
+    const response = await fetch(`${url}auth/login`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(user),
+    })
+    const data = await response.json()
+    if (!data.success) {
+      throw new Error(data.message)
+    }
+    return data
+  } catch (error) {
+    console.log("Error al loguear el usuario", error)
+    throw error
+  }
 
+}
 export const getAllPosts = async (token) => {
   try {
-    const response = await fetch(`${url}posts`, {  
+    const response = await fetch(`${url}posts`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
-        "Authorization": `Bearer ${token}`  
+        "Authorization": `Bearer ${token}`
       }
     });
     const data = await response.json();
@@ -55,12 +54,13 @@ export const getAllPosts = async (token) => {
     throw error;
   }
 };
-
-export const getMyProfile = async (username)=>{
+export const getMyProfile = async (token) => {
   try {
-    const response = await fetch(`${url}/users/${username}`, {
+    const response = await fetch(`${url}/profile`, {
       method: "GET",
-      redirect: "follow",
+      headers: {
+        'Authorization': `Bearer ${token}` 
+      }
     })
     const data = await response.json()
     if (!data.success) {
@@ -73,4 +73,4 @@ export const getMyProfile = async (username)=>{
   }
 }
 
- 
+
