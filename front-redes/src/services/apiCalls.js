@@ -1,5 +1,5 @@
-const url = 'https://backend-api-ii-redes-sociales-dev-fnbs.2.ie-1.fl0.io/api/'
-
+//const url = 'https://backend-api-ii-redes-sociales-dev-fnbs.2.ie-1.fl0.io/api/'
+const url = 'http://localhost:4000/api/'
 export const registerUserApi = async (user) => {
   try {
     const response = await fetch(`${url}auth/register`, {
@@ -8,9 +8,9 @@ export const registerUserApi = async (user) => {
       body: JSON.stringify(user),
     });
     const data = await response.json();
-    if (!data.success) {
+    /*if (!data.success) {
       throw new Error(data.message);
-    }
+    }*/
     return data;
   } catch (error) {
     console.log("Error al registrar el usuario", error);
@@ -25,9 +25,9 @@ export const LoginUser = async (user) => {
       body: JSON.stringify(user),
     })
     const data = await response.json()
-    if (!data.success) {
+    /*if (!data.success) {
       throw new Error(data.message)
-    }
+    }*/
     return data
   } catch (error) {
     console.log("Error al loguear el usuario", error)
@@ -45,27 +45,46 @@ export const getAllPosts = async (token) => {
       }
     });
     const data = await response.json();
-    if (!data.success) {
+    /*if (!data.success) {
       throw new Error(data.message);
-    }
+    }*/
     return data;
   } catch (error) {
     console.log("Error al recibir los posts", error);
     throw error;
   }
 };
+
+export const getMyPosts = async (token) => {
+  try {
+    const response = await fetch(`${url}posts/own`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    });
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log("Error al recibir los posts", error);
+    throw error;
+  }
+};
+
 export const getMyProfile = async (token) => {
   try {
-    const response = await fetch(`${url}/profile`, {
+    const response = await fetch(`${url}users/profile`, {
       method: "GET",
       headers: {
         'Authorization': `Bearer ${token}` 
       }
     })
     const data = await response.json()
-    if (!data.success) {
+    /*if (!data.success) {
       throw new Error(data.message)
-    }
+    }*/
     return data
   } catch (error) {
     console.log(error)

@@ -1,4 +1,4 @@
-import { getMyProfile } from "../../services/apiCalls";
+import { getMyProfile, getMyPosts } from "../../services/apiCalls";
 import "./Profile.css";
 import { useSelector } from "react-redux";
 import {useNavigate} from "react-router-dom"
@@ -7,6 +7,7 @@ import React, { useState, useEffect } from 'react';
 const Profile = () => {
     const navigate = useNavigate();
     const [userProfile, setProfile] = useState(null);
+    const [myPosts, setmyPosts] = useState(null);
     const [error, setError] = useState('');
     const token = useSelector((state) => state.user.token);
     // const token = localStorage.getItem('token');  
@@ -15,8 +16,16 @@ const Profile = () => {
         const fetchProfile = async () => {
             try {
                 const profileData = await getMyProfile(token);
-                if (profileData.success) {
-                    setProfile(profileData.user);  
+                if (profileData.email) {
+                    setProfile({ username : 'aaaa', email: profileData.email });
+                    const PostsData = await getMyPosts(token);
+                    if (1) {
+                        setmyPosts(PostsData.data);
+                        console.log(PostsData.data);
+                        console.log(myPosts);
+                    } else {
+                        throw new Error('Failed to load user profile');
+                    }
                 } else {
                     throw new Error('Failed to load user profile');
                 }
@@ -40,8 +49,8 @@ const Profile = () => {
             {error && <p>Error: {error}</p>}
             {userProfile ? (
                 <div>
-                    <p>Nombre: {userProfile.name}</p>  // Corregido para usar userProfile
-                    <p>Email: {userProfile.email}</p>  // Corregido para usar userProfile
+                    <p>Nombre: {userProfile.username}</p>
+                    <p>Email: {userProfile.email}</p>  
                 </div>
             ) : (
                 <p>Cargando perfil...</p>
