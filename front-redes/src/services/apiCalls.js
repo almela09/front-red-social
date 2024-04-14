@@ -111,6 +111,45 @@ export const getPost = async (token, postid) => {
   }
 };
 
+//router.put('/like/:id', auth, putLikes); 
+export const putLike = async (token, postid) => {
+  try {
+    const response = await fetch(`${url}posts/like/${postid}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    });
+    const data = await response.json();
+    console.log(data);
+
+    return data;
+  } catch (error) {
+    console.log("Error al obtener el post", error);
+    throw error;
+  }
+};
+
+export const removeLike = async (token, postid) => {
+  try {
+    const response = await fetch(`${url}posts/like/${postid}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    });
+    const data = await response.json();
+    console.log(data);
+
+    return data;
+  } catch (error) {
+    console.log("Error al obtener el post", error);
+    throw error;
+  }
+};
+
 export const createPost = async (token, postData) => {
   try {
     console.log(JSON.stringify(postData));
