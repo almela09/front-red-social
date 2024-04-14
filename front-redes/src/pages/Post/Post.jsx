@@ -32,6 +32,7 @@ const Profile = () => {
         } catch (error) {
           console.error("Error al añadir el like", error);
         }
+        window.location.reload();
     }
 
     const handleDislike = async (postid) => {
@@ -41,6 +42,7 @@ const Profile = () => {
         } catch (error) {
           console.error("Error al eliminar el like", error);
         }
+        window.location.reload();
     }
 
     useEffect(() => {

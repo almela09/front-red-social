@@ -31,7 +31,6 @@ console.log(token)
       {token && (
         <>
           <CustomB path="/profile" title="Profile" />
-          <CustomB path="/post" title="post" />
           <div onClick={handleLogout}>
           <CustomB path="/" title="Logout" />
           </div>

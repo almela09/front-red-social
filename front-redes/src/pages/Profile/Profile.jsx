@@ -22,12 +22,14 @@ const Profile = () => {
         } catch (error) {
           console.error("Error al borrar el post", error);
         }
-    }
+        navigate("/profile");
+     }
 
     const handlePost = async () => {
         try {
             const result = await createPost(token, { title, text });
             console.log(result);
+            navigate(`/post/${result.data._id}`);
             // Actualiza la lista de posts con el nuevo post
             //setmyPosts(prev => ({ data: [result, ...prev.data] }));
         } catch (error) {
