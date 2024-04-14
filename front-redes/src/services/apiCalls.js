@@ -91,6 +91,26 @@ export const deletePost = async (token, postid) => {
   }
 };
 
+export const getPost = async (token, postid) => {
+  try {
+    console.log(postid)
+    const response = await fetch(`${url}posts/${postid}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    });
+    const data = await response.json();
+    console.log(data);
+
+    return data;
+  } catch (error) {
+    console.log("Error al obtener el post", error);
+    throw error;
+  }
+};
+
 export const createPost = async (token, postData) => {
   try {
     console.log(JSON.stringify(postData));

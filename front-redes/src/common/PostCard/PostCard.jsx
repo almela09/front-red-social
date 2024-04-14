@@ -6,10 +6,9 @@ const PostCard = ({ post }) => {
   return (
     <div className="box-design">
         <div className="cardcontent-design">
-            <h5>{post.title}</h5>
+            <h5><a href={`/post/${post._id}`}>{post.title}</a></h5>
             <p>{post.text}</p>
             <p>{post.author}</p>
-
         </div>
     {/* <Card className="box-design" sx={{ maxWidth: 345, marginBottom: 2 }}>
       <CardContent>
