@@ -91,6 +91,26 @@ export const deletePost = async (token, postid) => {
   }
 };
 
+export const createPost = async (token, postData) => {
+  try {
+    console.log(JSON.stringify(postData));
+    const response = await fetch(`${url}posts/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`,
+      },
+      body: JSON.stringify(postData) 
+    });
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log("Error al crear el post", error);
+    throw error;
+  }
+};
+
 export const getMyProfile = async (token) => {
   try {
     const response = await fetch(`${url}users/profile`, {

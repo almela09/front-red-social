@@ -1,4 +1,4 @@
-import { getMyProfile, getMyPosts, deletePost } from "../../services/apiCalls";
+import { getMyProfile, getMyPosts, deletePost, createPost } from "../../services/apiCalls";
 import PostCard from "../../common/PostCard/PostCard";
 import "./Profile.css";
 import { useSelector } from "react-redux";
@@ -9,6 +9,8 @@ const Profile = () => {
     const navigate = useNavigate();
     const [userProfile, setProfile] = useState(null);
     const [myPosts, setmyPosts] = useState(null);
+    const [title, setTitle] = useState('prueba');
+    const [text, setText] = useState('prrrrueba');
     const [error, setError] = useState('');
     const token = useSelector((state) => state.user.token);
     // const token = localStorage.getItem('token');
@@ -21,6 +23,18 @@ const Profile = () => {
           console.error("Error al borrar el post", error);
         }
     }
+
+    const handlePost = async () => {
+        try {
+            const result = await createPost(token, { title, text });
+            console.log(result);
+            // Actualiza la lista de posts con el nuevo post
+            //setmyPosts(prev => ({ data: [result, ...prev.data] }));
+        } catch (error) {
+            console.error("Error al publicar el post", error);
+            setError(error.message);
+        }
+    };
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -55,7 +69,7 @@ const Profile = () => {
     return (
         <div className="profile-design">
             <h1>Perfil del Usuario</h1>
-            {error && <p>Error: {error}</p>}
+
             {userProfile ? (
                 <div>
                     <p>Nombre: {userProfile.username}</p>
@@ -73,6 +87,13 @@ const Profile = () => {
     </div>
   ))}
 </div>
+<hr/>
+<div>
+                <p>New Post</p>
+                <input type="text" name="title" value={title} onChange={e => setTitle(e.target.value)} />
+                <input type="text" name="text" value={text} onChange={e => setText(e.target.value)} />
+                <button onClick={handlePost} className="post-link">Post it!</button>
+            </div>
 
 
 
