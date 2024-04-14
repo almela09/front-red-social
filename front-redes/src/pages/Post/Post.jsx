@@ -9,8 +9,7 @@ import { useParams } from 'react-router-dom';
 // 
 const Profile = () => {
     const navigate = useNavigate();
-    const [postDetail, setPostDetail] = useState(null);
-    const [Post, setPost] = useState(null);
+    const [post, setPost] = useState('');
     const [error, setError] = useState('');
     const token = useSelector((state) => state.user.token);
     const { id } = useParams();
@@ -29,10 +28,10 @@ const Profile = () => {
         const fetchPost = async () => {
             try {
                 const detail = await getPost(token, id);
-                console.log(detail);
-                if (detail.title) {
-                    setPostDetail({ title : detail.title, text: detail.text });
-                    console.log(postDetail);
+                if (detail.data) {
+                    setPost({title:detail.data.title, text : detail.data.text, author:detail.data.author, date:detail.data.createdAt,
+                        likes:detail.data.like.length
+                    })
                 } else {
                     throw new Error('Failed to load post');
                 }
@@ -42,7 +41,6 @@ const Profile = () => {
         };
 
         if (token) {
-            console.log("hola?")
             fetchPost();
         } else {
             console.error("No token available");
@@ -53,7 +51,12 @@ const Profile = () => {
     return (
         <div className="profile-design">
 <div className="card-design">
-      {/* <PostCard post={postDetail} /> */}
+<h1>{post.title}</h1>
+<p>{post.text}</p>
+<p>Autor: {post.author}</p>
+<p>Creado: {post.date}</p>
+<p>Likes: {post.likes}</p>
+<a href="/">Volver</a>
 </div>
         </div>
     );
