@@ -9,6 +9,7 @@ const PostCard = ({ post }) => {
             <h5>{post.title}</h5>
             <p>{post.text}</p>
             <p>{post.author}</p>
+
         </div>
     {/* <Card className="box-design" sx={{ maxWidth: 345, marginBottom: 2 }}>
       <CardContent>

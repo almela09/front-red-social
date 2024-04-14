@@ -32,6 +32,7 @@ export const Home = () => {
     return (
       <div className="home-design">
         <div className="nyan-design"></div>
+        
         <h6>Bienvenido a KawaiiDev, tu red social más friki.</h6>
       </div>
     );
@@ -39,11 +40,12 @@ export const Home = () => {
   if (posts.length === 0) {
     return <p>No hay posts disponibles.</p>;
   }
+  
   return (
     <div className="home-design">
       <div className="card-design">
         {posts.map((post, index) => (
-          <PostCard key={post._id} post={post} />
+          <PostCard key={post._id} post={post}  />
         ))}
       </div>
     </div>

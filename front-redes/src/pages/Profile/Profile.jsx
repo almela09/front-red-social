@@ -1,4 +1,5 @@
 import { getMyProfile, getMyPosts } from "../../services/apiCalls";
+import PostCard from "../../common/PostCard/PostCard";
 import "./Profile.css";
 import { useSelector } from "react-redux";
 import {useNavigate} from "react-router-dom"
@@ -20,9 +21,8 @@ const Profile = () => {
                     setProfile({ username : 'aaaa', email: profileData.email });
                     const PostsData = await getMyPosts(token);
                     if (1) {
-                        setmyPosts(PostsData.data);
-                        console.log(PostsData.data);
-                        console.log(myPosts);
+                        setmyPosts({'data' : PostsData.data});
+                        console.log(myPosts.data);
                     } else {
                         throw new Error('Failed to load user profile');
                     }
@@ -52,9 +52,17 @@ const Profile = () => {
                     <p>Nombre: {userProfile.username}</p>
                     <p>Email: {userProfile.email}</p>  
                 </div>
+                
             ) : (
                 <p>Cargando perfil...</p>
             )}
+    <div className="card-design">
+      {myPosts && Array.isArray(myPosts.data) && myPosts.data.map((post, index) => (
+        <PostCard key={post._id} post={post} />
+      ))}
+    </div>
+
+
         </div>
     );
 };

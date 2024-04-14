@@ -19,8 +19,14 @@ console.log(token)
   return (
     <div className="header-design">
       <CustomB path="/" title="Home" />
-      <CustomB path="/register" title="Register" />
-      <CustomB path="/login" title="Login" />
+      
+
+      {!token && (
+        <>
+          <CustomB path="/register" title="Register" />
+          <CustomB path="/login" title="Login" />
+        </>
+      )}
 
       {token && (
         <>
