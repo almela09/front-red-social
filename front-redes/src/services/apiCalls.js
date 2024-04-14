@@ -73,6 +73,24 @@ export const getMyPosts = async (token) => {
   }
 };
 
+export const deletePost = async (token, postid) => {
+  try {
+    const response = await fetch(`${url}posts/${postid}`, {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      }
+    });
+    const data = await response.json();
+
+    return data;
+  } catch (error) {
+    console.log("Error al borrar el post", error);
+    throw error;
+  }
+};
+
 export const getMyProfile = async (token) => {
   try {
     const response = await fetch(`${url}users/profile`, {
@@ -90,6 +108,7 @@ export const getMyProfile = async (token) => {
     console.log(error)
     throw error
   }
-}
+};
 
+//router.delete('/:id', auth, deletePost);  
 

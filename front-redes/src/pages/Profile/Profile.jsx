@@ -1,4 +1,4 @@
-import { getMyProfile, getMyPosts } from "../../services/apiCalls";
+import { getMyProfile, getMyPosts, deletePost } from "../../services/apiCalls";
 import PostCard from "../../common/PostCard/PostCard";
 import "./Profile.css";
 import { useSelector } from "react-redux";
@@ -11,7 +11,16 @@ const Profile = () => {
     const [myPosts, setmyPosts] = useState(null);
     const [error, setError] = useState('');
     const token = useSelector((state) => state.user.token);
-    // const token = localStorage.getItem('token');  
+    // const token = localStorage.getItem('token');
+    
+    const handleDelete = async (postid) => {
+        try {
+          const result = await deletePost(token, postid);
+          console.log(result); // Puedes hacer algo con el resultado o mostrar un mensaje
+        } catch (error) {
+          console.error("Error al borrar el post", error);
+        }
+    }
 
     useEffect(() => {
         const fetchProfile = async () => {
@@ -56,11 +65,15 @@ const Profile = () => {
             ) : (
                 <p>Cargando perfil...</p>
             )}
-    <div className="card-design">
-      {myPosts && Array.isArray(myPosts.data) && myPosts.data.map((post, index) => (
-        <PostCard key={post._id} post={post} />
-      ))}
+<div className="card-design">
+  {myPosts && Array.isArray(myPosts.data) && myPosts.data.map((post, index) => (
+    <div key={post._id}>
+      <PostCard post={post} />
+      <a onClick={() => handleDelete(post._id)} className="delete-link">Delete</a>
     </div>
+  ))}
+</div>
+
 
 
         </div>
