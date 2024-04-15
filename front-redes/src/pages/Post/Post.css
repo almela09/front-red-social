@@ -1,17 +1,25 @@
-
 .profile-design {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    background: url('../../assets/images/wallpaper.jpeg');
-    margin: 0;
-    padding: 0;
-
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: url("../../assets/images/wallpaper.jpeg");
+  margin: 0;
+  padding: 0;
 }
 
-.put-like{
+.put-like {
+  color: rgb(29, 15, 185);
+  transition: 0.5s;
+}
 
-   color:#000
+.put-like:hover {
+  cursor: pointer;
+  color: rgb(247, 236, 87);
+  transition: 0.5s;
+}
+
+.volver-design {
+  color: #000;
 }

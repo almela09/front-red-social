@@ -1,25 +1,35 @@
 import "./PostCard.css"
 // import { Card, CardContent, Typography } from '@mui/material';
-
-const PostCard = ({ post }) => {
-   
-  return (
-    <div className="box-design">
-        <div className="cardcontent-design">
-            <h5><a href={`/post/${post._id}`}>{post.title}</a></h5>
-            <p>{post.text}</p>
-            <p>{post.author}</p>
-        </div>
-    {/* <Card className="box-design" sx={{ maxWidth: 345, marginBottom: 2 }}>
-      <CardContent>
-        <Typography variant="h5">{post.title}</Typography>
-        <Typography paragraph>{post.text}</Typography>
-        <Typography color="text.secondary">Author ID: {post.author}</Typography>
-        <Typography color="text.secondary">Likes: {post.like.length}</Typography>
-      </CardContent>
-    </Card> */}
+import {useNavigate} from "react-router-dom";
+const PostCard = ({  post }) => {
+  const navigate = useNavigate()
+  const handleClick = () => {
+    navigate(`/post/${post._id}`)
+}
+return (
+  <div className="box-design" onClick={handleClick}>
+    <div className="cardcontent-design">
+      <h5>{post.title}</h5>
+      <p>{post.text}</p>
+      <p>{post.author}</p>
+      <button onClick={(e) => {
+        e.stopPropagation(); // Esto evita que el evento del botón también active el evento del div padre
+        navigate(`/post/${post._id}`);
+      }} className="enter-post-button">
+        Enter Post
+      </button>
     </div>
-  );
+  </div>
+);
+  // return (
+  //   <div className="box-design">
+  //       <div className="cardcontent-design" onClick={handleClick}>
+  //           <h5 href={`/post/${post._id}`}>{post.title}</h5>
+  //           <p>{post.text}</p>
+  //           <p>{post.author}</p>
+  //       </div>
+   
+  //   </div>
+  // );
 };
-
 export default PostCard;

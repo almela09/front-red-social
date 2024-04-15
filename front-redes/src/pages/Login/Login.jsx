@@ -16,14 +16,12 @@ export const Login = () => {
     email: "",
     password: "",
   });
-
   const inputHandler = (e) => {
     setUser((prevState) => ({
       ...prevState,
       [e.target.name]: e.target.value,
     }));
   };
-
   const Login = async (e) => {
     e.preventDefault();
     const fetched = await LoginUser(user);
@@ -36,7 +34,6 @@ export const Login = () => {
           decodeToken: decodificado,
         })
       );
-
       setTimeout(() => {
         navigate("/");
       }, 500);

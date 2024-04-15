@@ -14,8 +14,8 @@ const Profile = () => {
   const navigate = useNavigate();
   const [userProfile, setProfile] = useState(null);
   const [myPosts, setmyPosts] = useState(null);
-  const [title, setTitle] = useState("prueba");
-  const [text, setText] = useState("prrrrueba");
+  const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
   const [error, setError] = useState("");
   const token = useSelector((state) => state.user.token);
   // const token = localStorage.getItem('token');
@@ -23,13 +23,19 @@ const Profile = () => {
   const handleDelete = async (postid) => {
     try {
       const result = await deletePost(token, postid);
-      console.log(result); // Puedes hacer algo con el resultado o mostrar un mensaje
+      if (result && result.success) { // Asumiendo que la API devuelve un campo de éxito
+        console.log("Post deleted:", result);
+        // Actualizar el estado para eliminar el post de la lista
+        setmyPosts(prevPosts => {
+          return {
+            data: prevPosts.data.filter(post => post._id !== postid)
+          };
+        });
+      }
     } catch (error) {
       console.error("Error al borrar el post", error);
     }
-    navigate("/profile");
-  };
-
+  }
   const handlePost = async () => {
     try {
       const result = await createPost(token, { title, text });
@@ -74,49 +80,52 @@ const Profile = () => {
 
   return (
     <div className="profile-design">
-      <h1>Perfil del Usuario</h1>
-
-      {userProfile ? (
-        <div>
-          <p>Nombre: {userProfile.name}</p>
-          <p>Email: {userProfile.email}</p>
-        </div>
-      ) : (
-        <p>Cargando perfil...</p> //spinner
-      )}
-      <div className="card-design">
-        {myPosts &&
-          Array.isArray(myPosts.data) &&
-          myPosts.data.map((post, index) => (
-            <div key={post._id}>
-              <PostCard post={post} />
-              <button onClick={() => handleDelete(post._id)} className="delete-link">
-                Delete
-              </button>
+      <div className="title-design">Perfil del Usuario</div>
+  
+      <div className="posts-wrapper">
+        <div className="input-group">
+          {userProfile ? (
+            <div>
+              <p>Nombre: {userProfile.name}</p>
+              <p>Email: {userProfile.email}</p>
             </div>
-          ))}
-      </div>
-      <hr />
-      <div>
-        <p>New Post</p>
-        <input
-          type="text"
-          name="title"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
-        />
-        <input
-          type="text"
-          name="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-        />
-        <button onClick={handlePost} className="post-link">
-          Post it!
-        </button>
+          ) : (
+            <p>Cargando perfil...</p> //spinner
+          )}
+          <p>New Post</p>
+          <input
+            type="text"
+            name="title"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            placeholder="Enter title here"
+          />
+          <textarea
+            className="block-text"
+            name="text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            placeholder="Write your post..."
+          />
+          <button onClick={handlePost} className="post-link">
+            Post it!
+          </button>
+        </div>
+  
+        <div className="card-design">
+          {myPosts &&
+            Array.isArray(myPosts.data) &&
+            myPosts.data.map((post, index) => (
+              <div key={post._id}>
+                <PostCard post={post} />
+                <button onClick={() => handleDelete(post._id)} className="delete-link">
+                  Delete
+                </button>
+              </div>
+            ))}
+        </div>
       </div>
     </div>
   );
-};
-
+}  
 export default Profile;

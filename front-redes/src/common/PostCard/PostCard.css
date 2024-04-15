@@ -1,11 +1,22 @@
-
-.box-design{
-    border-color: white;
-    border-width: 3px;
-    border-radius: 10px;
+.box-design {
+  border-color: white;
+  border-width: 3px;
+  border-radius: 10px;
+ 
 }
 
-/* 
+
 div{
     border: 1px solid red
-} */
+}
+
+.ptitle-design {
+  color: rgb(29, 15, 185);
+  transition: 0.5s;
+}
+
+.ptitle-design:hover {
+  cursor: pointer;
+  color: rgb(247, 236, 87);
+  transition: 0.5s;
+}

@@ -40,7 +40,6 @@ export const Home = () => {
   if (posts.length === 0) {
     return <p>No hay posts disponibles.</p>;
   }
-
   return (
     <div className="home-design">
       <div className="card-design">

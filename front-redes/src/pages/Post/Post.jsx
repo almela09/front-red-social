@@ -1,5 +1,3 @@
-
-
 import { getPost, putLike, removeLike } from "../../services/apiCalls";
 import "./Post.css";
 import { useSelector } from "react-redux";
@@ -18,20 +16,32 @@ const Profile = () => {
 
   const updateLikes = async (postid, action) => {
     try {
-      const result = action === 'like' ? await putLike(token, postid) : await removeLike(token, postid);
+      const result =
+        action === "like"
+          ? await putLike(token, postid)
+          : await removeLike(token, postid);
       console.log(result); // Registra el resultado
-      if (action === 'like') {
-        setPost((prev) => ({ ...prev, likes: prev.likes + 1, like: [...prev.like, decodeToken(token).userId] }));
+      if (action === "like") {
+        setPost((prev) => ({
+          ...prev,
+          likes: prev.likes + 1,
+          like: [...prev.like, decodeToken(token).userId],
+        }));
         setLiked(true);
       } else {
-        setPost((prev) => ({ ...prev, likes: prev.likes - 1, like: prev.like.filter((userId) => userId !== decodeToken(token).userId) }));
+        setPost((prev) => ({
+          ...prev,
+          likes: prev.likes - 1,
+          like: prev.like.filter(
+            (userId) => userId !== decodeToken(token).userId
+          ),
+        }));
         setLiked(false);
       }
     } catch (error) {
       console.error(`Error al manejar ${action}`, error);
     }
   };
-
   useEffect(() => {
     const fetchPost = async () => {
       if (!token) {
@@ -59,10 +69,8 @@ const Profile = () => {
         setError(error.message);
       }
     };
-
     fetchPost();
   }, [token, id]);
-
   return (
     <div className="profile-design">
       <div className="card-design">
@@ -72,18 +80,25 @@ const Profile = () => {
         <p>Creado: {post.date}</p>
         <p>Likes: {post.likes}</p>
         {liked ? (
-          <button onClick={() => updateLikes(post._id, 'dislike')} className="put-like">
-            Te gusta
+          <button
+            onClick={() => updateLikes(post._id, "dislike")}
+            className="put-like"
+          >
+            Dislike
           </button>
         ) : (
-          <button onClick={() => updateLikes(post._id, 'like')} className="put-like">
-            Dar like
+          <button
+            onClick={() => updateLikes(post._id, "like")}
+            className="put-like"
+          >
+            Like
           </button>
         )}
-        <a href="/">Volver</a>
+        <a className="volver-design" href="/">
+          Volver
+        </a>
       </div>
     </div>
   );
 };
-
 export default Profile;
