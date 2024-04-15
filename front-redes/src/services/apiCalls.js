@@ -1,4 +1,4 @@
-//const url = 'https://backend-api-ii-redes-sociales-dev-fnbs.2.ie-1.fl0.io/api/'
+// const url = 'https://backend-api-ii-redes-sociales-dev-fnbs.2.ie-1.fl0.io/api/'
 const url = 'http://localhost:4000/api/'
 export const registerUserApi = async (user) => {
   try {
@@ -159,7 +159,7 @@ export const createPost = async (token, postData) => {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${token}`,
       },
-      body: JSON.stringify(postData) 
+      body: JSON.stringify(postData)
     });
     const data = await response.json();
 
@@ -175,7 +175,7 @@ export const getMyProfile = async (token) => {
     const response = await fetch(`${url}users/profile`, {
       method: "GET",
       headers: {
-        'Authorization': `Bearer ${token}` 
+        'Authorization': `Bearer ${token}`
       }
     })
     const data = await response.json()
