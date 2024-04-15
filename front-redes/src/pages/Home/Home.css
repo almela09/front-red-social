@@ -1,13 +1,13 @@
 .home-design {
   display: flex;
-  flex-direction: column;  /* Asegura que los elementos se apilen verticalmente */
-  justify-content: flex-start; /* Alinea los elementos al inicio del contenedor */
-  align-items: stretch; /* Estira los elementos hijos para que ocupen todo el ancho posible */
+  flex-direction: column;  
+  justify-content: flex-start; 
+  align-items: stretch; 
   height: 100vh;
   width: 100vw;
   background: url("../../assets/images/wallpaper.jpeg");
-  margin: 0; /* Elimina cualquier margen exterior */
-  padding: 0; /* Elimina cualquier padding interior */
+  margin: 0; 
+  padding: 0; 
   /* display: flex;
 
   justify-content: center;
@@ -36,11 +36,10 @@
 .banner-design{
   height: 50vh; 
   width: 100%; 
- 
+ background-color: blue;
   
-  background-image: url(../../assets/images/welcome1.gif);
-  background-position: center; /* Centra la imagen en el banner */
-  background-repeat: no-repeat;
+  /* background-image: url(../../assets/images/luna.jpg); */
+  
   box-sizing: border-box;
   margin-left: 0;
   
