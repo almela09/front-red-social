@@ -29,6 +29,10 @@ box-sizing: border-box;
 html, body {
   max-width: 100%;
   overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+  width: 100%; 
+ 
 }
 body {
   font-family:"Pixelify Sans", sans-serif;
@@ -47,7 +51,20 @@ h1 {
 }
 
 button {
-  border-radius: 8px;
+  border-radius: 0; /* Elimina el redondeo para un efecto más pixelado */
+  border: 3px solid #000000; /* Borde negro sólido para imitar el contorno pixelado */
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  
+  background-color: #1f0886; /* Fondo azul oscuro */
+  color: #FFFFFF; /* Texto en blanco para más contraste */
+  cursor: pointer;
+  transition: background-color 0.1s, transform 0.1s; /* Transición suave al cambiar el color y efecto de pulsación */
+  transform: scale(1); /* Escala inicial */
+  text-align: center;
+  user-select: none; /* Evita que el usuario seleccione el texto */
+  /* border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
@@ -55,14 +72,18 @@ button {
   font-family: inherit;
   background-color: #1f0886;
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: border-color 0.25s; */
 }
 button:hover {
   background-color: #f6e444;
+  
+  transform: scale(0.98); /* Efecto de pulsación al pasar el mouse */
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+  /* outline: 4px auto -webkit-focus-ring-color; */
+  outline: none; /* Elimina el contorno predeterminado */
+  border-color: #FFD700;
 }
 
 @media (prefers-color-scheme: light) {

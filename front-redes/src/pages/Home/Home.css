@@ -1,27 +1,52 @@
+.home-design {
+  display: flex;
+  flex-direction: column;  /* Asegura que los elementos se apilen verticalmente */
+  justify-content: flex-start; /* Alinea los elementos al inicio del contenedor */
+  align-items: stretch; /* Estira los elementos hijos para que ocupen todo el ancho posible */
+  height: 100vh;
+  width: 100vw;
+  background: url("../../assets/images/wallpaper.jpeg");
+  margin: 0; /* Elimina cualquier margen exterior */
+  padding: 0; /* Elimina cualquier padding interior */
+  /* display: flex;
 
-.home-design{
-
-    display: flex;
-    
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    width: 100vw;
-    background: url('../../assets/images/wallpaper.jpeg');
-    margin: 0;
-    padding: 0;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: url("../../assets/images/wallpaper.jpeg");
+  margin: 0;
+  padding: 0; */
 }
 
 .card-design {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr); 
-    gap: 20px; 
-    justify-content: center; 
-    padding: 20px; 
-   
-  }
-  .home-design > * {
-    margin: 9px; 
-  }
-
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  justify-content: center;
+  padding: 20px;
+}
+.home-design > * {
+  margin: 9px;
+}
+.kawaidev-design {
+  font-size: larger;
+  font-weight: bolder;
+}
+.banner-design{
+  height: 50vh; 
+  width: 100%; 
  
+  
+  background-image: url(../../assets/images/welcome1.gif);
+  background-position: center; /* Centra la imagen en el banner */
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  margin-left: 0;
+  
+ 
+}
+
+/* div {
+  border: 1px solid red;
+} */

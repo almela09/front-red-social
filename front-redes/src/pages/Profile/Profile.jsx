@@ -9,6 +9,7 @@ import "./Profile.css";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
+
 //
 const Profile = () => {
   const navigate = useNavigate();
@@ -23,9 +24,9 @@ const Profile = () => {
   const handleDelete = async (postid) => {
     try {
       const result = await deletePost(token, postid);
-      if (result && result.success) { // Asumiendo que la API devuelve un campo de éxito
+      if (result && result.success) { 
         console.log("Post deleted:", result);
-        // Actualizar el estado para eliminar el post de la lista
+        
         setmyPosts(prevPosts => {
           return {
             data: prevPosts.data.filter(post => post._id !== postid)
@@ -41,8 +42,7 @@ const Profile = () => {
       const result = await createPost(token, { title, text });
       console.log(result);
       navigate(`/post/${result.data._id}`);
-      // Actualiza la lista de posts con el nuevo post
-      //setmyPosts(prev => ({ data: [result, ...prev.data] }));
+     
     } catch (error) {
       console.error("Error al publicar el post", error);
       setError(error.message);

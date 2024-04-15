@@ -1,4 +1,4 @@
-.box-design {
+/* .box-design {
   border-color: white;
   border-width: 3px;
   border-radius: 10px;
@@ -19,4 +19,41 @@ div{
   cursor: pointer;
   color: rgb(247, 236, 87);
   transition: 0.5s;
+} */
+/* Reset styles for box-design */
+.box-design {
+  border: 2px solid #000;
+  background-color: #ff9dd0;
+  padding: 8px;
+  margin-bottom: 10px; /* Espacio entre tarjetas si se listan varias */
+  cursor: pointer;
+}
+
+.cardcontent-design {
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid black; /* Borde clásico de Windows 98 para contenido interno */
+}
+
+.cardcontent-design h5, .cardcontent-design p {
+  margin: 4px 0; /* Espaciado vertical entre elementos de texto */
+  color: black; /* Color de texto estándar */
+}
+
+.enter-post-button {
+  background-color: #000080; /* Azul oscuro típico de Windows 98 */
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.enter-post-button:hover {
+  background-color:  #ff9dd0; 
+}
+
+
+div {
+  border: none; 
 }

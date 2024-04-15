@@ -30,10 +30,10 @@ export const Home = () => {
   }
   if (!token) {
     return (
+      
       <div className="home-design">
-        <div className="nyan-design"></div>
-
-        <h6>Bienvenido a KawaiiDev, tu red social más friki.</h6>
+    <div className="banner-design"></div>    
+        <h6 className="kawaidev-design">Bienvenido a KawaiiDev, tu red social más friki.</h6>
       </div>
     );
   }
