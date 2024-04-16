@@ -31,10 +31,16 @@ export const Home = () => {
   if (!token) {
     return (
       
-      <div className="home-design">
+  <div className="home-design">
+    
     <div className="banner-design"></div>    
         <h6 className="kawaidev-design">Bienvenido a KawaiiDev, tu red social más friki.</h6>
+
+        <div>
+      <img src="https://i.gifer.com/PYh.gif" alt="gato" />
+    </div>
       </div>
+      
     );
   }
   if (posts.length === 0) {

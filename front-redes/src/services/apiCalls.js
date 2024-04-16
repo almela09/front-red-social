@@ -189,5 +189,21 @@ export const getMyProfile = async (token) => {
   }
 };
 
+export const getAllUsers = async(token) =>{
+
+  const response = await fetch(`${url}users`, {
+    method: 'GET',
+    headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+    }
+});
+if (!response.ok) {
+    const errorData = await response.json();
+    throw new Error(errorData.message || 'Error al obtener usuarios');
+}
+return response.json();
+}
+
 //router.delete('/:id', auth, deletePost);  
 

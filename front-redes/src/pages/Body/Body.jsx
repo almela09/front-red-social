@@ -4,7 +4,7 @@ import { Login } from "../Login/Login";
 import { Register } from "../Register/Register";
 import Profile from "../Profile/Profile";
 import Post from "../Post/Post";
-
+import Admin from "../Admin/Admin"
 export const Body = () => {
   return (
     <Routes>
@@ -14,6 +14,7 @@ export const Body = () => {
       <Route path="/profile" element={<Profile />} />
       <Route path="/post/:id" element={<Post />} />
       <Route path="/post" element={<Home />} />
+      <Route path="/admin" element={<Admin />} />
     </Routes>
   );
 };

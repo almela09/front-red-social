@@ -73,6 +73,7 @@ const Profile = () => {
   }, [token, id]);
   return (
     <div className="profile-design">
+    
       <div className="card-design">
         <h1>{post.title}</h1>
         <p>{post.text}</p>
