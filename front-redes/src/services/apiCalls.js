@@ -189,21 +189,41 @@ export const getMyProfile = async (token) => {
   }
 };
 
-export const getAllUsers = async(token) =>{
+export const getAllUsers = async (token) => {
 
   const response = await fetch(`${url}users`, {
     method: 'GET',
     headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${token}`
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
     }
-});
-if (!response.ok) {
+  });
+  if (!response.ok) {
     const errorData = await response.json();
     throw new Error(errorData.message || 'Error al obtener usuarios');
-}
-return response.json();
+  }
+  return response.json();
 }
 
 //router.delete('/:id', auth, deletePost);  
 
+export const updateProfile = async (userId, userData, token) =>{
+  try {
+    const response = await fetch(`${url}/${userId}`, {
+        method: 'PUT', 
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}` 
+        },
+        body: JSON.stringify(userData) 
+    });
+    if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Unable to update user profile');
+    }
+    return await response.json(); 
+} catch (error) {
+    console.error('Error updating user profile:', error);
+    throw error; 
+}
+}
