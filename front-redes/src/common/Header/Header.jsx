@@ -21,7 +21,7 @@ console.log(decodificado);
 
   return (
     <div className="header-design">
-    <div className= "titlekawaii-design">KawaiiDev</div>
+    <div className= "titlekawaii-design"></div>
       <CustomB path="/" title="Home" />
       
 

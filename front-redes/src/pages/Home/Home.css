@@ -37,16 +37,19 @@
 .banner-design{
   height: 50vh; 
   width: 100%; 
- background-color: blue;
+ /* background-color: blue; */
   
-  /* background-image: url(../../assets/images/luna.jpg); */
+  background-image: url(../../assets/images/welcome1.gif);
+  background-repeat: no-repeat; 
+  background-size: cover;
+  background-position: center; 
   
+  box-sizing: border-box;
+  margin-left: 0;
   box-sizing: border-box;
   margin-left: 0;
   
  
 }
 
-/* div {
-  border: 1px solid red;
-} */
+
